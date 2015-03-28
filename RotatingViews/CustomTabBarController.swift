@@ -19,7 +19,7 @@ class CustomTabBarController: UITabBarController {
     }
 
 
-    /*
+    
     override func supportedInterfaceOrientations() -> Int {
         if (self.selectedIndex == 0){
             NSNotificationCenter.defaultCenter().postNotificationName("orientationWillChange", object: nil)
@@ -27,7 +27,7 @@ class CustomTabBarController: UITabBarController {
         }
         return Int(UIInterfaceOrientationMask.All.rawValue)
         
-    } */
+    }
     
     /*
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

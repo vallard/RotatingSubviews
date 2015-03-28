@@ -10,6 +10,10 @@ If you look closely you'll see that the subviews (First Label) and the 'One'
 and 'Two' rotate with the phone while the main view (Red with the white
 stripe) stays the same. 
 
+There's a blog entry I wrote on this here:
+
+http://benincosa.com/?p=3280
+
 ## More Explanation
 
 This particular applicationion is launched with a UITabBarController so 
