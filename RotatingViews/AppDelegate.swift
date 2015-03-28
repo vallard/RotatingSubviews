@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        
+        // make sure we are in right device mode from the start in case we are launched in landscape mode. 
+        //self.orientationChanged(NSNotification())
+        
+        
         return true
     }
 
@@ -39,6 +46,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    /*
+    func application(application: UIApplication, willChangeStatusBarOrientation newStatusBarOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        println("AppDelegate: Going to change status bar orientation")
+    }*/
+    
+    func getInitialOrientation() {
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        let orientation : UIDeviceOrientation = UIDevice.currentDevice().orientation
+        //var num : NSNumber = NSNumber(integer: orientation.rawValue)
+        println("initial orientation: \(orientation.rawValue )")
+        UIDevice.currentDevice().endGeneratingDeviceOrientationNotifications()
+
+    }
+    
+    func orientationChanged(notification: NSNotification ){
+        //println("Application received orentation change notification")
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        let orientation : UIDeviceOrientation = UIDevice.currentDevice().orientation
+        var num : NSNumber = NSNumber(integer: orientation.rawValue)
+        let userDict : [String: NSNumber] = [ "orientation" : num ]
+        NSNotificationCenter.defaultCenter().postNotificationName("orientationWillChange", object: self, userInfo: userDict  )
+        UIDevice.currentDevice().endGeneratingDeviceOrientationNotifications()
+
     }
 
 
