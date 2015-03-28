@@ -6,6 +6,10 @@ subviews when the phone moves.
 (sorry about the poor animated gif quality)
 ![Rotating View Gif](rs.gif)
 
+If you look closely you'll see that the subviews (First Label) and the 'One'
+and 'Two' rotate with the phone while the main view (Red with the white
+stripe) stays the same. 
+
 ## More Explanation
 
 This particular applicationion is launched with a UITabBarController so 
